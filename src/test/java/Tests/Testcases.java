@@ -90,12 +90,12 @@ public class Testcases {
             ex1.setTC_ID("6");
             ex1.setTC_Summary("Verify that \"Name\", \"Address\", \"Phone\", \"Email\" fields displays when user selects \"Create customer\" in Customer dropdown.");
             ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_027");
+            ex1.setTC_Note("TC_026");
         } else {
             ex1.setTC_ID("6");
             ex1.setTC_Summary("Verify that \"Name\", \"Address\", \"Phone\", \"Email\" fields displays when user selects \"Create customer\" in Customer dropdown.");
             ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_027");
+            ex1.setTC_Note("TC_026");
         }
 
         Result_Execls.saveResultExcel(ex1);
@@ -125,19 +125,49 @@ public class Testcases {
 
             Excel_Object ex1 = new Excel_Object();
             if (dr.findElement(By.xpath(".//span[text()='Please enter your name']")).isDisplayed() == true) {
-                ex1.setTC_ID("6");
+                ex1.setTC_ID("7");
                 ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
                 ex1.setTC_Result("Passed");
                 ex1.setTC_Note("TC_027");
             } else {
-                ex1.setTC_ID("6");
+                ex1.setTC_ID("7");
                 ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
                 ex1.setTC_Result("Failed");
                 ex1.setTC_Note("TC_027");
             }
 
             Result_Execls.saveResultExcel(ex1);
+    }
+    //Verify that User can not create a Customer when user enter Phone are special characters or character.
+    @Test
+    public void SpecialCharacterPhone() throws IOException{
+        ClickCustomer_Action.clickCustomer(dr);
 
+
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Create Customer']");
+
+        ClickCreateCustomer_Action.clickCreateCustomer(dr);
+        create.setName("VanMai");
+        create.setEmail("hongvanlkcit@gmail.com");
+        create.setPhone("dfl!#@$#");
+        create.setAddress("da nang");
+        CreateCustomer1_Action.enterCreateACustomer(dr,create);
+        CreateCustomer1_Action.clickCreateACustomer(dr);
+
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//span[text()='Only numbers 0-9']")).isDisplayed() == true) {
+            ex1.setTC_ID("8");
+            ex1.setTC_Summary("Verify that User can not create a Customer when user enter Phone are special characters or character.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_034");
+        } else {
+            ex1.setTC_ID("8");
+            ex1.setTC_Summary("Verify that User can not create a Customer when user enter Phone are special characters or character.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_034");
+        }
+
+        Result_Execls.saveResultExcel(ex1);
     }
 }
 
