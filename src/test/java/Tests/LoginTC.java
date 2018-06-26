@@ -93,6 +93,7 @@ public class LoginTC {
     public void end()
     {
         //toi la Long
+        //toi la Long xin chao cac ban
         dr.quit();
     }
 }
