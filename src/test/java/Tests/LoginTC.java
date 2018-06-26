@@ -93,7 +93,7 @@ public class LoginTC {
     public void end()
     {
         //toi la Long... them commen cua Thien
-
+// long
         //toi la Long... them commen cua Thien
         //toi la Long... them commen cua Thien
         dr.quit();
