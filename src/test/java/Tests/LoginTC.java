@@ -92,8 +92,7 @@ public class LoginTC {
     @AfterTest
     public void end()
     {
-        //toi la Long
-        //toi la Long xin chao cac ban
+        //toi la Long... them commen cua Thien
         dr.quit();
     }
 }
