@@ -84,7 +84,22 @@ public class Testcases {
 
 
 
-        Assert.assertEquals(true,dr.findElement(By.xpath("//strong[text()='Create Customer']")).isDisplayed());
+        Excel_Object ex1 = new Excel_Object();
+        if ((dr.findElement(By.xpath(".//label[text()='Name']")).isDisplayed() == true) && (dr.findElement(By.xpath(".//label[text()='Email']")).isDisplayed()==true)
+                && (dr.findElement(By.xpath(".//label[text()='Phone']")).isDisplayed()==true) &&(dr.findElement(By.xpath(".//label[text()='Address']")).isDisplayed()==true) ){
+            ex1.setTC_ID("6");
+            ex1.setTC_Summary("Verify that \"Name\", \"Address\", \"Phone\", \"Email\" fields displays when user selects \"Create customer\" in Customer dropdown.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_027");
+        } else {
+            ex1.setTC_ID("6");
+            ex1.setTC_Summary("Verify that \"Name\", \"Address\", \"Phone\", \"Email\" fields displays when user selects \"Create customer\" in Customer dropdown.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_027");
+        }
+
+        Result_Execls.saveResultExcel(ex1);
+        //Assert.assertEquals(true,dr.findElement(By.xpath("//strong[text()='Create Customer']")).isDisplayed());
 
 
     }
@@ -92,10 +107,13 @@ public class Testcases {
     //Verify that Error message " Please enter your Name" displays when user leave Name field blank.
     @Test
     public void BlankName() throws IOException{
+        //1. click vao nut customer o tren menu
         ClickCustomer_Action.clickCustomer(dr);
+
+
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Create Customer']");
+
         ClickCreateCustomer_Action.clickCreateCustomer(dr);
-        WebDriverWait wait = new WebDriverWait(dr, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//a[text()='Create Customer']")));
 
 
         create.setName("");
@@ -105,8 +123,8 @@ public class Testcases {
         CreateCustomer1_Action.enterCreateACustomer(dr,create);
         CreateCustomer1_Action.clickCreateACustomer(dr);
 
-            /*Excel_Object ex1 = new Excel_Object();
-            if (dr.findElement(By.xpath(".//span[text()='Please enter your email']")).isDisplayed() == true) {
+            Excel_Object ex1 = new Excel_Object();
+            if (dr.findElement(By.xpath(".//span[text()='Please enter your name']")).isDisplayed() == true) {
                 ex1.setTC_ID("6");
                 ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
                 ex1.setTC_Result("Passed");
@@ -118,7 +136,7 @@ public class Testcases {
                 ex1.setTC_Note("TC_027");
             }
 
-            Result_Excels.saveResultExcel(ex1);*/
+            Result_Execls.saveResultExcel(ex1);
 
     }
 }
