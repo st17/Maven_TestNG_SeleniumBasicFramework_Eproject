@@ -17,15 +17,15 @@ import org.testng.annotations.*;
 public class LoginTC {
 
     WebDriver dr;
-    String SiteURL = "http://demo.guru99.com/V1/index.php";
+    String SiteURL = "http://113.176.100.130:8081/EBankingWebsite/";
     Users user1 = new Users();
     int TimeOut = 10;
     String WebDriver_Resource = ".\\src\\test\\drivers\\chromedriver.exe";
 
     @BeforeMethod
     public void init() throws InterruptedException {
-        user1.setUsername("mngr138445");
-        user1.setPassword("tujAsUb");
+        user1.setUsername("vandai123");
+        user1.setPassword("uhkhjuhkhj");
 
         //System.setProperty("allure.results.directory", "/target");
         System.setProperty("webdriver.chrome.driver", WebDriver_Resource);
@@ -47,15 +47,13 @@ public class LoginTC {
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
         Login_Actions.clickLoginButton(dr);
 
-        if(dr.getTitle().equals("GTPL Bank Manager HomePage"))
+        if(dr.getTitle().equals("Ebanking"))
         {
-            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify user can login with valid username and password","Passed");
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify that login successfully when users clicking \"Đăng nhập\" button","Passed");
         }else
-            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify user can login with valid username and password","Failed");
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify that login successfully when users clicking \"Đăng nhập\" button","Failed");
         //Check Home page display after login successful
-        Assert.assertEquals(" GTPL Bank Manager HomePage ".trim(),dr.getTitle());
-        Assert.assertEquals(true,dr.findElement(By.xpath(".//a[@href='addcustomerpage.php']")).isDisplayed());
-        Assert.assertEquals("http://demo.guru99.com/V1/html/Managerhomepage.php",dr.getCurrentUrl());
+        //Assert.assertEquals("Ebanking".trim(),dr.getTitle());
 
         //End
         dr.close();
@@ -66,8 +64,8 @@ public class LoginTC {
     @Test
     public  void LoginTC2() throws InterruptedException {
 
-        /*BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
-        BankLogin_Page.clickLoginButton(dr);*/
+        BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
+        BankLogin_Page.clickLoginButton(dr);
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
         Login_Actions.clickLoginButton(dr);
@@ -79,12 +77,12 @@ public class LoginTC {
         alert.accept();
         dr.switchTo().defaultContent();
 
-        //Check Home page display after login successful
+        Check Home page display after login successful
         Assert.assertEquals(" GTPL Bank Home Page ".trim(),dr.getTitle());
         Assert.assertEquals(true,dr.findElement(By.xpath(".//input[@name='uid']")).isDisplayed());
         Assert.assertEquals("http://demo.guru99.com/V1/index.php",dr.getCurrentUrl());
 
-        //End
+        End
         dr.close();
 
     }
