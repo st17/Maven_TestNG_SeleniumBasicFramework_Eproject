@@ -95,7 +95,13 @@ public class LoginTC {
         //toi la Long... them commen cua Thien
 // long
         //toi la Long... them commen cua Thien
+
+
+
+
+
         //toi la Long... them commen cua Thien
+        //ST17
         dr.quit();
     }
 }
