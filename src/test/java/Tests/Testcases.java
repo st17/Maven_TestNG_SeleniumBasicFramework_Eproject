@@ -2,13 +2,11 @@ package Tests;
 
 //import Actions.CreateCustomer_Action;
 import Actions.*;
-import Actions.Login_Actions;
 import Commons.Result_Execls;
+import Commons.WaitforControl;
 import Objects.CreateCustomer1_Object;
 import Objects.Excel_Object;
 import Objects.Login_Object;
-import Objects.Register_Object;
-import Pages.ClickCreateCustomer_Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -79,10 +77,12 @@ public class Testcases {
     @Test
     public void CreateACustomer () throws IOException {
         ClickCustomer_Action.clickCustomer(dr);
+
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Create Customer']");
+
         ClickCreateCustomer_Action.clickCreateCustomer(dr);
 
-        WebDriverWait wait = new WebDriverWait(dr, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath( ".//a[text()='Create Customer']")));
+
 
         Assert.assertEquals(true,dr.findElement(By.xpath("//strong[text()='Create Customer']")).isDisplayed());
 
