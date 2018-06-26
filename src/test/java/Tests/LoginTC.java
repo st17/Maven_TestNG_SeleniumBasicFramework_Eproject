@@ -63,31 +63,31 @@ public class LoginTC {
     }
 
     //Verify user cannot loggin with invalid username and password
-    @Test
-    public  void LoginTC2() throws InterruptedException {
-
-        /*BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
-        BankLogin_Page.clickLoginButton(dr);*/
-
-        Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
-        Login_Actions.clickLoginButton(dr);
-
-        Alert alert = dr.switchTo().alert();
-
-        Assert.assertEquals("User is not valid",alert.getText());
-
-        alert.accept();
-        dr.switchTo().defaultContent();
-
-        //Check Home page display after login successful
-        Assert.assertEquals(" GTPL Bank Home Page ".trim(),dr.getTitle());
-        Assert.assertEquals(true,dr.findElement(By.xpath(".//input[@name='uid']")).isDisplayed());
-        Assert.assertEquals("http://demo.guru99.com/V1/index.php",dr.getCurrentUrl());
-
-        //End
-        dr.close();
-
-    }
+//    @Test
+//    public  void LoginTC2() throws InterruptedException {
+//
+//        /*BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
+//        BankLogin_Page.clickLoginButton(dr);*/
+//
+//        Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
+//        Login_Actions.clickLoginButton(dr);
+//
+//        Alert alert = dr.switchTo().alert();
+//
+//        Assert.assertEquals("User is not valid",alert.getText());
+//
+//        alert.accept();
+//        dr.switchTo().defaultContent();
+//
+//        //Check Home page display after login successful
+//        Assert.assertEquals(" GTPL Bank Home Page ".trim(),dr.getTitle());
+//        Assert.assertEquals(true,dr.findElement(By.xpath(".//input[@name='uid']")).isDisplayed());
+//        Assert.assertEquals("http://demo.guru99.com/V1/index.php",dr.getCurrentUrl());
+//
+//        //End
+//        dr.close();
+//
+//    }
 
     @AfterTest
     public void end()
