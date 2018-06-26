@@ -92,6 +92,7 @@ public class LoginTC {
     @AfterTest
     public void end()
     {
+        //toi la Long
         dr.quit();
     }
 }
