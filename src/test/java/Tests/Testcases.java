@@ -55,10 +55,41 @@ public class Testcases {
         Result_Execls.saveResultExcel(ex);
     }
 
+    //Verify that Error message " The Email  or Password is incorrect !" displays when user login with incorrect Username or Password.
+    @Test
+    public void dangnhap2() throws IOException{
+        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+
+        Login_Object ob2 = new Login_Object();
+        ob2.setEmail("vyvanviet@gmail.com");
+        ob2.setPassword("aab123");
+        dr = new ChromeDriver();
+        dr.get(siteURL);
+
+        Login_Action.enterEmailAndPassword(dr, ob2);
+        Login_Action.clickLogin(dr);
+
+        Excel_Object ex = new Excel_Object();
+        if (dr.findElement(By.xpath(".//p[text()='The email or password is incorrect!']")).isDisplayed() == true) {
+            ex.setTC_ID("6");
+            ex.setTC_Summary("Verify that Error message \" The Email  or Password is incorrect !\" displays when user login with incorrect Username or Password");
+            ex.setTC_Result("Passed");
+            ex.setTC_Note("TC_04");
+        } else {
+            ex.setTC_ID("6");
+            ex.setTC_Summary("Verify that Error message \" The Email  or Password is incorrect !\" displays when user login with incorrect Username or Password");
+            ex.setTC_Result("Failed");
+            ex.setTC_Note("TC_04");
+        }
+
+        Result_Execls.saveResultExcel(ex);
+    }
+
+
     //Verify that Moves to Customer List page when user login successfully.
     CreateCustomer1_Object create = new CreateCustomer1_Object();
     @BeforeMethod
-    public void First () {
+    public void First () throws IOException{
         System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
         Login_Object ob1 = new Login_Object();
         ob1.setEmail("vyvanviet@gmail.com");
@@ -70,6 +101,20 @@ public class Testcases {
         Login_Action.clickLogin(dr);
         dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
+        Excel_Object ex = new Excel_Object();
+        if (dr.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div[2]/div/div/div/div[2]")).isDisplayed() == true) {
+            ex.setTC_ID("7");
+            ex.setTC_Summary("Verify that Moves to Customer List page when user login successfully.");
+            ex.setTC_Result("Passed");
+            ex.setTC_Note("TC_04");
+        } else {
+            ex.setTC_ID("7");
+            ex.setTC_Summary("Verify that Moves to Customer List page when user login successfully.");
+            ex.setTC_Result("Failed");
+            ex.setTC_Note("TC_04");
+        }
+
+        Result_Execls.saveResultExcel(ex);
 
     }
 
@@ -87,12 +132,12 @@ public class Testcases {
         Excel_Object ex1 = new Excel_Object();
         if ((dr.findElement(By.xpath(".//label[text()='Name']")).isDisplayed() == true) && (dr.findElement(By.xpath(".//label[text()='Email']")).isDisplayed()==true)
                 && (dr.findElement(By.xpath(".//label[text()='Phone']")).isDisplayed()==true) &&(dr.findElement(By.xpath(".//label[text()='Address']")).isDisplayed()==true) ){
-            ex1.setTC_ID("6");
+            ex1.setTC_ID("8");
             ex1.setTC_Summary("Verify that \"Name\", \"Address\", \"Phone\", \"Email\" fields displays when user selects \"Create customer\" in Customer dropdown.");
             ex1.setTC_Result("Passed");
             ex1.setTC_Note("TC_026");
         } else {
-            ex1.setTC_ID("6");
+            ex1.setTC_ID("8");
             ex1.setTC_Summary("Verify that \"Name\", \"Address\", \"Phone\", \"Email\" fields displays when user selects \"Create customer\" in Customer dropdown.");
             ex1.setTC_Result("Failed");
             ex1.setTC_Note("TC_026");
@@ -125,12 +170,12 @@ public class Testcases {
 
             Excel_Object ex1 = new Excel_Object();
             if (dr.findElement(By.xpath(".//span[text()='Please enter your name']")).isDisplayed() == true) {
-                ex1.setTC_ID("7");
+                ex1.setTC_ID("9");
                 ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
                 ex1.setTC_Result("Passed");
                 ex1.setTC_Note("TC_027");
             } else {
-                ex1.setTC_ID("7");
+                ex1.setTC_ID("9");
                 ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
                 ex1.setTC_Result("Failed");
                 ex1.setTC_Note("TC_027");
@@ -156,12 +201,12 @@ public class Testcases {
 
         Excel_Object ex1 = new Excel_Object();
         if (dr.findElement(By.xpath(".//span[text()='Only numbers 0-9']")).isDisplayed() == true) {
-            ex1.setTC_ID("8");
+            ex1.setTC_ID("10");
             ex1.setTC_Summary("Verify that User can not create a Customer when user enter Phone are special characters or character.");
             ex1.setTC_Result("Passed");
             ex1.setTC_Note("TC_034");
         } else {
-            ex1.setTC_ID("8");
+            ex1.setTC_ID("10");
             ex1.setTC_Summary("Verify that User can not create a Customer when user enter Phone are special characters or character.");
             ex1.setTC_Result("Failed");
             ex1.setTC_Note("TC_034");
