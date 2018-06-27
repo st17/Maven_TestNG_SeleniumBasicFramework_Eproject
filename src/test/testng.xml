@@ -12,11 +12,18 @@
 
         <classes>
 
-            <class name="Tests.LoginTC" >
+            <class name="Tests.Testcases" >
                 <methods>
-                    <include name="LoginTC1"/>
-                    <include name="LoginTC2"/>
+                    <!--<include name="BlankName"/>-->
+                    <!--<include name="LoginTC2"/>-->
                 </methods>
+            </class>
+
+            <class name="Tests.Register" >
+                <!--<methods>-->
+                <!--<include name="LoginTC1"/>-->
+                <!--<include name="LoginTC2"/>-->
+                <!--</methods>-->
             </class>
 
         </classes>

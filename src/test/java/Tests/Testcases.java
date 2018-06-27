@@ -354,8 +354,32 @@ public class Testcases {
         }
 
         Result_Execls.saveResultExcel(ex1);
+    }
+    //Verify that Detail information of Lead displays when user select a Lead the system.
+    @Test
+    public void DetailCustomer() throws IOException{
+        //1. Move to Customer dropdown.
+        ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Select a lead.
+        DetailCustomer_Action.clickACustomer(dr);
 
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//h5[text()='Customer Information']")).isDisplayed() == true) {
+            ex1.setTC_ID("16");
+            ex1.setTC_Summary("Verify that Detail information of Lead displays when user select a Lead the system.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_048");
+        } else {
+            ex1.setTC_ID("16");
+            ex1.setTC_Summary("Verify that Detail information of Lead displays when user select a Lead the system.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_048");
+        }
 
+        Result_Execls.saveResultExcel(ex1);
     }
 }
 
