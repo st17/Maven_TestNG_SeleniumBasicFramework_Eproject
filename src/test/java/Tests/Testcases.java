@@ -302,7 +302,7 @@ public class Testcases {
     }
         //Verify that the duplicate information display when user enter a lead by name at Search field.
         @Test
-        public void DuplicateInformation(){
+        public void DuplicateInformation() throws IOException{
         //1. Move to Customer dropdown.
             ClickCustomer_Action.clickCustomer(dr);
             WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
@@ -312,6 +312,48 @@ public class Testcases {
 
             ClickShowAllCustomer_Object ob1 = new ClickShowAllCustomer_Object();
             ob1.setName("hong");
+
+            Excel_Object ex1 = new Excel_Object();
+            if ((dr.findElement(By.xpath(".//strong[text()='Show All Customers']")).isDisplayed() == true) &&
+                    (dr.findElement(By.xpath(".//h5[text()='Customers List']")).isDisplayed() == true)) {
+                ex1.setTC_ID("14");
+                ex1.setTC_Summary("Verify that the duplicate information display when user enter a lead by name at Search field.");
+                ex1.setTC_Result("Passed");
+                ex1.setTC_Note("TC_041");
+            } else {
+                ex1.setTC_ID("14");
+                ex1.setTC_Summary("Verify that the duplicate information display when user enter a lead by name at Search field.");
+                ex1.setTC_Result("Failed");
+                ex1.setTC_Note("TC_041");
+            }
+
+            Result_Execls.saveResultExcel(ex1);
+    }
+    //Verify that User can move to page 2 when user clicking on "Next" button of pagination function.
+    @Test
+    public void Pagination() throws IOException{
+        //1. Move to Customer dropdown.
+        ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Click on pagination function
+        Pagination_Action.clickPaginationNext(dr);
+
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//span[text()='(2 of 9)']")).isDisplayed() == true) {
+            ex1.setTC_ID("15");
+            ex1.setTC_Summary("Verify that User can move to page 2 when user clicking on \"Next\" button of pagination function.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_043");
+        } else {
+            ex1.setTC_ID("15");
+            ex1.setTC_Summary("Verify that User can move to page 2 when user clicking on \"Next\" button of pagination function.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_043");
+        }
+
+        Result_Execls.saveResultExcel(ex1);
 
 
     }
