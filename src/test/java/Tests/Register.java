@@ -191,7 +191,7 @@ public class Register {
             ex.setTC_Result("Passed");
             ex.setTC_Note("TC_013");
         } else {
-            ex.setTC_ID("6");
+            ex.setTC_ID("5");
             ex.setTC_Summary("Verify that error message\" Password does not match the confirm password!\" displays " +
                             "when the user enter the Confirm password should be match the Password.");
             ex.setTC_Result("Failed");
