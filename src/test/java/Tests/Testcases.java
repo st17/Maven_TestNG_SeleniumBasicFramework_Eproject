@@ -26,7 +26,7 @@ public class Testcases {
     //Verify that error message ' Please enter your email' displays when user leave Email field blank
     @Test
     public void dangnhap1() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
 
         Login_Object ob2 = new Login_Object();
         //2. Leave Email field blank
@@ -59,7 +59,7 @@ public class Testcases {
     //Verify that Error message " The Email  or Password is incorrect !" displays when user login with incorrect Username or Password.
     @Test
     public void dangnhap2() throws IOException{
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
 
         Login_Object ob2 = new Login_Object();
         //2. Enter email and password is incorrect
@@ -93,7 +93,7 @@ public class Testcases {
     CreateCustomer1_Object create = new CreateCustomer1_Object();
     @BeforeMethod
     public void First () throws IOException{
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Login_Object ob1 = new Login_Object();
         //2. Enter email and password correct
         ob1.setEmail("vyvanviet@gmail.com");
@@ -309,6 +309,7 @@ public class Testcases {
 
             ClickShowAllCustomer_Object ob1 = new ClickShowAllCustomer_Object();
             ob1.setName("hong");
+            ClickShowAllCustomer_Action.enterName(ob1,dr);
 
             Excel_Object ex1 = new Excel_Object();
             if ((dr.findElement(By.xpath(".//strong[text()='Show All Customers']")).isDisplayed() == true) &&
@@ -397,6 +398,7 @@ public class Testcases {
         ob1.setEmail("huyennguyen123@gmail.com");
         ob1.setAddress("da nang");
         ob1.setPhone("0978586557");
+        EditCustomer_Action.enterCustomer(dr, ob1);
 
         //6. Clicks on Save button
         EditCustomer_Action.clickSave(dr);
