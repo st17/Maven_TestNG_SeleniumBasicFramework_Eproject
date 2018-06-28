@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class BankLogin_Page {
 
-    public static String txtUsername = ".//input[@name='uid']";
-    public static String txtPassword = ".//input[@name='password']";
-    public static String btnLogin = ".//input[@name='btnLogin']";
+    public static String txtUsername = ".//input[@name='j_idt10:j_idt12']";
+    public static String txtPassword = ".//input[@name='j_idt10:j_idt14']";
+    public static String btnLogin = ".//input[@name='j_idt10:j_idt16']";
 
    /* @FindBy(xpath = ".//input[@name='uid']" )
     static WebElement txtUsername;

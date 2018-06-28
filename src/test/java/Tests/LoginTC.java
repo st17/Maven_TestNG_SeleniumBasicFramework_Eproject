@@ -1,8 +1,11 @@
 package Tests;
 
+import Actions.Creatacc_Actions;
 import Actions.Login_Actions;
 import Commons.Result2Excels;
+import Objects.CreateAccount;
 import Objects.Users;
+import Pages.BankLogin_Page;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +20,7 @@ import org.testng.annotations.*;
 public class LoginTC {
 
     WebDriver dr;
-    String SiteURL = "http://113.176.100.130:8081/EBankingWebsite/";
+    String SiteURL = "http://ebanking.myvnc.com";
     Users user1 = new Users();
     int TimeOut = 10;
     String WebDriver_Resource = ".\\src\\test\\drivers\\chromedriver.exe";
@@ -47,49 +50,63 @@ public class LoginTC {
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
         Login_Actions.clickLoginButton(dr);
 
-        if(dr.getTitle().equals("Ebanking"))
+        if(dr.getTitle().equals("EBanking"))
         {
             Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify that login successfully when users clicking \"Đăng nhập\" button","Passed");
         }else
             Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify that login successfully when users clicking \"Đăng nhập\" button","Failed");
         //Check Home page display after login successful
-        //Assert.assertEquals("Ebanking".trim(),dr.getTitle());
+        Assert.assertEquals("EBanking".trim(),dr.getTitle());
 
         //End
         dr.close();
 
     }
-
-    //Verify user cannot loggin with invalid username and password
+// user can create new account
     @Test
-    public  void LoginTC2() throws InterruptedException {
-
-        BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
-        BankLogin_Page.clickLoginButton(dr);
-
-        Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
+    public void createaccount() throws InterruptedException, IOException {
+        Login_Actions.enterUsernameAndPassword(dr, user1.getUsername(), user1.getPassword());
         Login_Actions.clickLoginButton(dr);
+        Creatacc_Actions.chonmotaikhoan(dr);
+        Creatacc_Actions.chontaikhoademo(dr);
+        Thread.sleep(1000);
+        Creatacc_Actions.taikhoaantietkiem(dr);
+        Creatacc_Actions.clickmotaikhoan(dr);
+        Thread.sleep(1000);
+        String actualResult = dr.findElement(By.xpath(".//span[@class='ui-dialog-title'])")).getText();
+        String expectResult = "Thông báo";
+        Assert.assertEquals(actualResult, expectResult);
 
-        Alert alert = dr.switchTo().alert();
+        //Verify user cannot loggin with invalid username and password
+        //@Test
+        //ublic  void LoginTC2() throws InterruptedException {
 
-        Assert.assertEquals("User is not valid",alert.getText());
+        //Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
+        //ogin_Actions.clickLoginButton(dr);
 
-        alert.accept();
-        dr.switchTo().defaultContent();
+        //ogin_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
+        //Login_Actions.clickLoginButton(dr);
 
-        Check Home page display after login successful
-        Assert.assertEquals(" GTPL Bank Home Page ".trim(),dr.getTitle());
-        Assert.assertEquals(true,dr.findElement(By.xpath(".//input[@name='uid']")).isDisplayed());
-        Assert.assertEquals("http://demo.guru99.com/V1/index.php",dr.getCurrentUrl());
+        //Alert alert = dr.switchTo().alert();
 
-        End
-        dr.close();
+        //ssert.assertEquals("Sai tài khoản",alert.getText());
 
-    }
+        //alert.accept();
+        //  dr.switchTo().defaultContent();
 
-    @AfterTest
-    public void end()
-    {
-        dr.quit();
-    }
-}
+        ///Check Home page display after login successful
+        //Assert.assertEquals(" GTPL Bank Home Page ".trim(),dr.getTitle());
+        //ssert.assertEquals(true,dr.findElement(By.xpath(".//input[@name='uid']")).isDisplayed());
+        //ssert.assertEquals("http://demo.guru99.com/V1/index.php",dr.getCurrentUrl());
+
+        //End
+        //r.close();
+        //}
+
+        //@AfterTest
+        //public void end()
+        // {
+        //    dr.quit();
+        // }
+
+    }}
