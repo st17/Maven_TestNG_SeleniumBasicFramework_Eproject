@@ -10,27 +10,6 @@ public class BankLogin_Page {
 
     public static String txtUsername = ".//input[@name='j_idt10:j_idt12']";
     public static String txtPassword = ".//input[@name='j_idt10:j_idt14']";
-    public static String btnLogin = ".//input[@name='j_idt10:j_idt16']";
+    public static String btnLogin = ".//input[@type='submit']";
 
-   /* @FindBy(xpath = ".//input[@name='uid']" )
-    static WebElement txtUsername;
-
-    @FindBy(xpath = ".//input[@name='password']" )
-    static WebElement txtPassword;*/
-
-    /*public BankLogin_Page(WebDriver wd)
-    {
-
-    }*/
-
-  /*  public static void enterUsernameAndPassword(WebDriver wd,String username, String password)
-    {
-        wd.findElement(By.xpath(txtUsername)).sendKeys(username);
-        wd.findElement(By.xpath(txtPassword)).sendKeys(password);
-    }
-
-    public static void clickLoginButton(WebDriver wd)
-    {
-        wd.findElement(By.xpath(btnLogin)).click();
-    }*/
 }

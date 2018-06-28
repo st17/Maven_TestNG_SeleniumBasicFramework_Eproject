@@ -1,11 +1,8 @@
 package Tests;
 
-import Actions.Creatacc_Actions;
 import Actions.Login_Actions;
 import Commons.Result2Excels;
-import Objects.CreateAccount;
 import Objects.Users;
-import Pages.BankLogin_Page;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,9 +15,9 @@ import org.testng.annotations.*;
 
 
 public class LoginTC {
-
+    ///dsdsdsxfcxc
     WebDriver dr;
-    String SiteURL = "http://ebanking.myvnc.com";
+    String SiteURL = "http://113.176.100.130:8081/EBankingWebsite/";
     Users user1 = new Users();
     int TimeOut = 10;
     String WebDriver_Resource = ".\\src\\test\\drivers\\chromedriver.exe";
@@ -50,63 +47,122 @@ public class LoginTC {
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
         Login_Actions.clickLoginButton(dr);
 
-        if(dr.getTitle().equals("EBanking"))
+        Thread.sleep(1000);
+
+        if(dr.getTitle().equals("Ebanking"))
         {
             Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify that login successfully when users clicking \"Đăng nhập\" button","Passed");
         }else
             Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC01","Verify that login successfully when users clicking \"Đăng nhập\" button","Failed");
         //Check Home page display after login successful
-        Assert.assertEquals("EBanking".trim(),dr.getTitle());
+        //   Assert.assertEquals("Ebanking".trim(),dr.getTitle());
+        //   Assert.assertEquals(true,dr.findElement(By.xpath(".//a[contains(.,\"Tài khoản\")]")).isDisplayed());
+        //   Assert.assertEquals("http://113.176.100.130:8081/EBankingWebsite/faces/index.xhtml;jsessionid=4565378be1c8470256356789ae6a",dr.getCurrentUrl());
 
         //End
         dr.close();
 
     }
-// user can create new account
+
+    //Verify user cannot loggin with invalid username and password
     @Test
-    public void createaccount() throws InterruptedException, IOException {
-        Login_Actions.enterUsernameAndPassword(dr, user1.getUsername(), user1.getPassword());
+    public  void LoginTC2() throws InterruptedException, IOException {
+
+        /*BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
+        BankLogin_Page.clickLoginButton(dr);*/
+
+        Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
         Login_Actions.clickLoginButton(dr);
-        Creatacc_Actions.chonmotaikhoan(dr);
-        Creatacc_Actions.chontaikhoademo(dr);
+
         Thread.sleep(1000);
-        Creatacc_Actions.taikhoaantietkiem(dr);
-        Creatacc_Actions.clickmotaikhoan(dr);
-        Thread.sleep(1000);
-        String actualResult = dr.findElement(By.xpath(".//span[@class='ui-dialog-title'])")).getText();
-        String expectResult = "Thông báo";
-        Assert.assertEquals(actualResult, expectResult);
 
-        //Verify user cannot loggin with invalid username and password
-        //@Test
-        //ublic  void LoginTC2() throws InterruptedException {
-
-        //Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
-        //ogin_Actions.clickLoginButton(dr);
-
-        //ogin_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword()+"_wrong");
-        //Login_Actions.clickLoginButton(dr);
-
-        //Alert alert = dr.switchTo().alert();
-
-        //ssert.assertEquals("Sai tài khoản",alert.getText());
-
-        //alert.accept();
-        //  dr.switchTo().defaultContent();
-
-        ///Check Home page display after login successful
-        //Assert.assertEquals(" GTPL Bank Home Page ".trim(),dr.getTitle());
-        //ssert.assertEquals(true,dr.findElement(By.xpath(".//input[@name='uid']")).isDisplayed());
-        //ssert.assertEquals("http://demo.guru99.com/V1/index.php",dr.getCurrentUrl());
+        if(dr.getTitle().equals("Ebanking"))
+        {
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC02","Verify that the opens \"THÔNG TIN TÀI KHOẢN\" page display when users login successfully system","Passed");
+        }else
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC02","Verify that the opens \"THÔNG TIN TÀI KHOẢN\" page display when users login successfully system","Failed");
+        //Check Home page display after login successful
+        //   Assert.assertEquals("Ebanking".trim(),dr.getTitle());
+        Assert.assertEquals(true,dr.findElement(By.xpath(".//a[contains(.,\"Tài khoản\")]")).isDisplayed());
+        //   Assert.assertEquals("http://113.176.100.130:8081/EBankingWebsite/faces/index.xhtml;jsessionid=4565378be1c8470256356789ae6a",dr.getCurrentUrl());
 
         //End
-        //r.close();
-        //}
+        dr.close();
 
-        //@AfterTest
-        //public void end()
-        // {
-        //    dr.quit();
-        // }
+    }
 
-    }}
+    @AfterTest
+    public void end()
+    {
+        dr.quit();
+    }
+    @Test
+    public  void LoginTC3() throws InterruptedException, IOException {
+
+        user1.setUsername("rtug");
+        user1.setPassword("rtyfg");
+
+        //System.setProperty("allure.results.directory", "/target");
+        //System.setProperty("webdriver.chrome.driver", WebDriver_Resource);
+        //dr = new ChromeDriver();
+        dr.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
+        dr.manage().window().maximize();
+        // Navigate to site
+        dr.get(SiteURL);
+        System.out.println(dr.getTitle());
+
+
+        Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
+        Login_Actions.clickLoginButton(dr);
+
+        Thread.sleep(1000);
+
+        if(dr.getTitle().equals("Ebanking"))
+        {
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC03","Verify that validation message \"Tài khoản không tồn tại\" display when users login with enter username and password","Passed");
+        }else
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC03","Verify that validation message \"Tài khoản không tồn tại\" display when users login with enter username and password","Failed");
+        //Check Home page display after login successful
+        //   Assert.assertEquals("Ebanking".trim(),dr.getTitle());
+        //Assert.assertEquals(true,dr.findElement(By.xpath(".//a[contains(.,\"Tài khoản\")]")).isDisplayed());
+        //   Assert.assertEquals("http://113.176.100.130:8081/EBankingWebsite/faces/index.xhtml;jsessionid=4565378be1c8470256356789ae6a",dr.getCurrentUrl());
+
+        //End
+        dr.close();
+
+    }
+    @Test
+    public  void LoginTC4() throws InterruptedException, IOException {
+
+        user1.setUsername("");
+        user1.setPassword("rtyfg");
+
+        //System.setProperty("allure.results.directory", "/target");
+        // System.setProperty("webdriver.chrome.driver", WebDriver_Resource);
+        // dr = new ChromeDriver();
+        dr.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
+        dr.manage().window().maximize();
+        // Navigate to site
+        dr.get(SiteURL);
+        System.out.println(dr.getTitle());
+
+        Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
+        Login_Actions.clickLoginButton(dr);
+
+        Thread.sleep(1000);
+
+        if(dr.getTitle().equals("Ebanking"))
+        {
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC04","Verify that validation message \"Bạn chưa nhập tài khoản\" display when user login with password","Passed");
+        }else
+            Result2Excels.saveResult2ExcelFile("ResultDemo","Result","TC04","Verify that validation message \"Bạn chưa nhập tài khoản\" display when user login with password","Failed");
+        //Check Home page display after login successful
+        //   Assert.assertEquals("Ebanking".trim(),dr.getTitle());
+        //Assert.assertEquals(true,dr.findElement(By.xpath(".//a[contains(.,\"Tài khoản\")]")).isDisplayed());
+        //   Assert.assertEquals("http://113.176.100.130:8081/EBankingWebsite/faces/index.xhtml;jsessionid=4565378be1c8470256356789ae6a",dr.getCurrentUrl());
+
+        //End
+        dr.close();
+
+    }
+}
