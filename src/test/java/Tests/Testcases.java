@@ -3,6 +3,7 @@ package Tests;
 import Action.Login_Action;
 import Action.Register_Action;
 import Commons.ResultExcel;
+import Objects.Register;
 import Objects.Users;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,16 +18,15 @@ import java.util.concurrent.TimeUnit;
 
 public class Testcases {
     String URL = "http://113.176.100.130:8081/EBankingWebsite/";
-//    String URL = "http://113.176.100.130:8081/EBankingWebsite/";
     WebDriver dr;
     Users user = new Users();
+    Register register = new Register();
 
     @BeforeMethod
     public void Input() {
         System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
-      //  dr = new ChromeDriver();
         dr = new ChromeDriver();
-        dr.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         dr.get(URL);
     }
 
@@ -156,20 +156,82 @@ public class Testcases {
 
     }
 
-    @Test
-    public void TCs9_Register() throws IOException
-    {
-        Register_Action.ClickRegisterlink(dr);
+//    @Test
+//    public void TCs9_Register() throws IOException
+//    {
+//        Register_Action.ClickRegisterlink(dr);
+//        register.setTaikhoan("Diep");
+//        register.setMatkhau("123456789");
+//        register.setNhaplaiMK("123456789");
+//        register.setHoten("Diệp Đỗ");
+//        register.setSodienthoai("01214501624");
+//        register.setNgaysinh("01/01/1990");
+//        Register_Action.ClickGTnu(dr);
+//        register.setSoCMND("205590587");
+//        register.setEmail("diepdodn@gmail.com");
+//        Register_Action.enterInfomation(dr,register);
+//        Register_Action.ClickDangkyButton(dr);
+////        dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        Register_Action.ClickTaoTKButton(dr);
+//
+//        if (dr.findElement(By.xpath("//div[@id='j_idt9:msgs_container']")).isDisplayed()) {
+//            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Length is less than allowable minimum of '8''Validation Error message display in the upper right corner of the page when user register with account less than 8 characters", "Pass");
+//        } else {
+//            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Length is less than allowable minimum of '8'' Validation Error message display in the upper right corner of the page when user register with account less than 8 characters", "Fail");
+//        }
+//
+//        Assert.assertEquals(true, dr.findElement(By.xpath("//div[@id='j_idt9:msgs_container']")).isDisplayed());
+//    }
+//    @Test
+//    public void TCs10_Register() throws IOException
+//    {
+//        Register_Action.ClickRegisterlink(dr);
+//        register.setTaikhoan("");
+//        register.setMatkhau("123456789");
+//        register.setNhaplaiMK("123456789");
+//        register.setHoten("Diệp Đỗ");
+//        register.setSodienthoai("01214501624");
+//        register.setNgaysinh("01/01/1990");
+//        Register_Action.ClickGTnu(dr);
+//        register.setSoCMND("205590587");
+//        register.setEmail("diepdodn@gmail.com");
+//        Register_Action.enterInfomation(dr,register);
+//        dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        Register_Action.ClickDangkyButton(dr);
+//
+//        if (dr.findElement(By.xpath("//span[text()='Bạn chưa nhập tài khoản']")).isDisplayed()) {
+//            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Bạn chưa nhập tài khoản' Error message display in the upper right corner of the page when user register with blank 'Tài khoản' field", "Pass");
+//        } else {
+//            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Bạn chưa nhập tài khoản' Error message display in the upper right corner of the page when user register with blank 'Tài khoản' field", "Fail");
+//        }
+//
+//        Assert.assertEquals(true, dr.findElement(By.xpath("//span[text()='Bạn chưa nhập tài khoản']")).isDisplayed());
+//    }
+//    @Test
+//    public void TCs11_Register() throws IOException
+//    {
+//        Register_Action.ClickRegisterlink(dr);
+//        register.setTaikhoan("Diepdo101");
+//        register.setMatkhau("123456789");
+//        register.setNhaplaiMK("123456789");
+//        register.setHoten("Diệp Đỗ");
+//        register.setSodienthoai("01214501624");
+//        register.setNgaysinh("01/01/1990");
+//        Register_Action.ClickGTnu(dr);
+//        register.setSoCMND("205590587");
+//        register.setEmail("diepdodn@gmail.com");
+//        Register_Action.enterInfomation(dr,register);
+//        Register_Action.ClickDangkyButton(dr);
+//
+//        if (dr.findElement(By.xpath("//span[text()='Tài khoản đã tồn tại']")).isDisplayed()) {
+//            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Bạn chưa nhập tài khoản' Error message display in the upper right corner of the page when user register with blank 'Tài khoản' field", "Pass");
+//        } else {
+//            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Bạn chưa nhập tài khoản' Error message display in the upper right corner of the page when user register with blank 'Tài khoản' field", "Fail");
+//        }
+//
+//        Assert.assertEquals(true, dr.findElement(By.xpath("//span[text()='Tài khoản đã tồn tại']")).isDisplayed());
+//    }
 
-
-        if (dr.findElement(By.xpath("//span[text()='Đăng kí tài khoản']")).isDisplayed()) {
-            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Length is less than allowable minimum of '8''Validation Error message display in the upper right corner of the page when user register with account less than 8 characters", "Pass");
-        } else {
-            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Length is less than allowable minimum of '8'' Validation Error message display in the upper right corner of the page when user register with account less than 8 characters", "Fail");
-        }
-
-        Assert.assertEquals(true, dr.findElement(By.xpath("//span[text()='Đăng kí tài khoản']")).isDisplayed());
-    }
 
 
 
