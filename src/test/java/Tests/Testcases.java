@@ -4,10 +4,7 @@ package Tests;
 import Actions.*;
 import Commons.Result_Execls;
 import Commons.WaitforControl;
-import Objects.ClickShowAllCustomer_Object;
-import Objects.CreateCustomer1_Object;
-import Objects.Excel_Object;
-import Objects.Login_Object;
+import Objects.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -381,8 +378,72 @@ public class Testcases {
 
         Result_Execls.saveResultExcel(ex1);
     }
-}
+    //Verify that User can edit for the lead when user clicking on Edit button.
+    @Test
+    public void EditCustomer() throws IOException{
+        //1. Move to Customer dropdown.
+        ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Select a lead.
+        DetailCustomer_Action.clickACustomer(dr);
+        //4. Click Edit button
+        EditCustomer_Action.clickEdit(dr);
 
+        //5. Edit information
+        EditCustomer_Object ob1 = new EditCustomer_Object();
+        ob1.setName("huyen");
+        ob1.setEmail("huyennguyen123@gmail.com");
+        ob1.setAddress("da nang");
+        ob1.setPhone("0978586557");
+
+        //6. Clicks on Save button
+        EditCustomer_Action.clickSave(dr);
+
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//strong[text()='Information']")).isDisplayed() == true) {
+            ex1.setTC_ID("17");
+            ex1.setTC_Summary("Verify that User can edit for the lead when user clicking on Edit button.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_055");
+        } else {
+            ex1.setTC_ID("17");
+            ex1.setTC_Summary("Verify that User can edit for the lead when user clicking on Edit button.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_055");
+        }
+
+        Result_Execls.saveResultExcel(ex1);
+    }
+    //Verify that Customer list  in the end page displayed when user clicking on "End" button of pagination function.
+    @Test
+    public void PaginationEnd() throws IOException {
+        //1. Move to Customer dropdown.
+        ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Click on "End" button.
+        PaginationEnd_Action.clickPaginationEnd(dr);
+
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//span[text()='(9 of 9)']")).isDisplayed() == true) {
+            ex1.setTC_ID("18");
+            ex1.setTC_Summary("Verify that Customer list  in the end page displayed when user clicking on \"End\" button of pagination function.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_064");
+        } else {
+            ex1.setTC_ID("18");
+            ex1.setTC_Summary("Verify that Customer list  in the end page displayed when user clicking on \"End\" button of pagination function.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_064");
+        }
+
+        Result_Execls.saveResultExcel(ex1);
+
+    }
+}
 
 
 
