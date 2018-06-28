@@ -4,18 +4,16 @@ package Tests;
 import Actions.*;
 import Commons.Result_Execls;
 import Commons.WaitforControl;
-import Objects.ClickShowAllCustomer_Object;
-import Objects.CreateCustomer1_Object;
-import Objects.Excel_Object;
-import Objects.Login_Object;
 import Objects.*;
-import Pages.Campaign_Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -95,7 +93,7 @@ public class Testcases {
     CreateCustomer1_Object create = new CreateCustomer1_Object();
     @BeforeMethod
     public void First () throws IOException{
-        System.setProperty("webdriver.chrome.driver", "E:\\Soft_Tester\\Project_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
         Login_Object ob1 = new Login_Object();
         //2. Enter email and password correct
         ob1.setEmail("vyvanviet@gmail.com");
@@ -378,111 +376,73 @@ public class Testcases {
             ex1.setTC_Note("TC_048");
         }
 
-
         Result_Execls.saveResultExcel(ex1);
     }
-    //Verify that campaigns dropdown contains these data when clicking on it: Show All Campaigns, Create Campaign, Show All Campaigns Type, Create Campaigns Type
+    //Verify that User can edit for the lead when user clicking on Edit button.
     @Test
-    public void dropdownCampaigns() throws IOException
-    {
-        Excel_Object ex1 = new Excel_Object();
-        Campaign_Action.clickCampaign(dr);
+    public void EditCustomer() throws IOException{
+        //1. Move to Customer dropdown.
+        ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Select a lead.
+        DetailCustomer_Action.clickACustomer(dr);
+        //4. Click Edit button
+        EditCustomer_Action.clickEdit(dr);
 
-        if(dr.findElement(By.xpath(Campaign_Page.item1_campaigns)).isDisplayed()==true &&dr.findElement(By.xpath(Campaign_Page.item2_campaigns)).isDisplayed()==true
-                &&dr.findElement(By.xpath(Campaign_Page.item3_campaigns)).isDisplayed()==true &&dr.findElement(By.xpath(Campaign_Page.item4_campaigns)).isDisplayed()==true)
-        {
-            ex1.setTC_ID("31");
-            ex1.setTC_Summary("Verify that campaigns dropdown contains these data when clicking on it: Show All Campaigns, Create Campaign, Show All Campaigns Type, Create Campaigns Type");
+        //5. Edit information
+        EditCustomer_Object ob1 = new EditCustomer_Object();
+        ob1.setName("huyen");
+        ob1.setEmail("huyennguyen123@gmail.com");
+        ob1.setAddress("da nang");
+        ob1.setPhone("0978586557");
+
+        //6. Clicks on Save button
+        EditCustomer_Action.clickSave(dr);
+
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//strong[text()='Information']")).isDisplayed() == true) {
+            ex1.setTC_ID("17");
+            ex1.setTC_Summary("Verify that User can edit for the lead when user clicking on Edit button.");
             ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_032");
-        }
-        else
-        {
-            ex1.setTC_ID("16");
-            ex1.setTC_Summary("Verify that campaigns dropdown contains these data when clicking on it: Show All Campaigns, Create Campaign, Show All Campaigns Type, Create Campaigns Type");
+            ex1.setTC_Note("TC_055");
+        } else {
+            ex1.setTC_ID("17");
+            ex1.setTC_Summary("Verify that User can edit for the lead when user clicking on Edit button.");
             ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_032");
+            ex1.setTC_Note("TC_055");
         }
-        Result_Execls.saveResultExcel(ex1);
-    }
-    //Verify that navigate to "createCampaignType" page when user selects "Create Campaigns Type"
-    @Test
-    public void navigateCreateCampaignType()throws IOException
-    {
-        Excel_Object ex1 = new Excel_Object();
-        Campaign_Action.clickCampaign(dr);
-        WaitforControl.waitforControlVisible(dr, "//a[text()='Create Campaign Type']");
-        Campaign_Action.selectItem4Campaign(dr);
 
-        if(dr.findElement(By.xpath("//h2[text()='Create Campaigns Type']")).isDisplayed()==true)
-        {
-            ex1.setTC_ID("32");
-            ex1.setTC_Summary("Verify that navigate to createCampaignType page when user selects Create Campaigns Type");
-            ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_033");
-        }
-        else
-        {
-            ex1.setTC_ID("16");
-            ex1.setTC_Summary("Verify that navigate to createCampaignType page when user selects Create Campaigns Type");
-            ex1.setTC_Result("Failed")  ;
-            ex1.setTC_Note("TC_033");
-        }
         Result_Execls.saveResultExcel(ex1);
     }
-    //Verify that "Campaign Type Name" fields display when user selects "Create Campaigns Type
+    //Verify that Customer list  in the end page displayed when user clicking on "End" button of pagination function.
     @Test
-    public void checkFieldCampaignType() throws IOException
-    {
-        Excel_Object ex1 = new Excel_Object();
-        Campaign_Action.clickCampaign(dr);
-        WaitforControl.waitforControlVisible(dr, "//a[text()='Create Campaign Type']");
-        Campaign_Action.selectItem4Campaign(dr);
-        if(dr.findElement(By.xpath("//input[@id='campaigntypeform:ctn']")).isDisplayed() == true)
-        {
-            ex1.setTC_ID("33");
-            ex1.setTC_Summary("Verify that Campaign Type Name fields display when user selects Create Campaigns Type");
-            ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_034");
-        }
-        else
-        {
-            ex1.setTC_ID("33");
-            ex1.setTC_Summary("Verify that Campaign Type Name fields display when user selects Create Campaigns Type");
-            ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_034");
-        }
-        Result_Execls.saveResultExcel(ex1);
-    }
-    //Verify that error message "Please enter campaign type name" displays when user leave "Campaign Type Name" field blank
-    @Test
-    public void messageCampaignType() throws IOException
-    {
-        Excel_Object ex1 = new Excel_Object();
-        Campaign_Action.clickCampaign(dr);
-        WaitforControl.waitforControlVisible(dr, "//a[text()='Create Campaign Type']");
-        Campaign_Action.selectItem4Campaign(dr);
-        CampaignType ob1 = new CampaignType();
-        ob1.setName("");
-        Campaign_Action.enterCampaignType(ob1,dr);
-        Campaign_Action.clickSubmit(dr);
-        if (dr.findElement(By.xpath("//span[text()='Please enter campaign type name']")).isDisplayed()== true)
-        {
-            ex1.setTC_ID("34");
-            ex1.setTC_Summary("Verify that error message \"Please enter campaign type name\" displays when user leave \"Campaign Type Name\" field blank");
-            ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_035");
-        }
-        else
-        {
-            ex1.setTC_ID("34");
-            ex1.setTC_Summary("Verify that error message \"Please enter campaign type name\" displays when user leave \"Campaign Type Name\" field blank");
-            ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_035");
-        }
-        Result_Execls.saveResultExcel(ex1);
-    }
+    public void PaginationEnd() throws IOException {
+        //1. Move to Customer dropdown.
+        ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Click on "End" button.
+        PaginationEnd_Action.clickPaginationEnd(dr);
 
+        Excel_Object ex1 = new Excel_Object();
+        if (dr.findElement(By.xpath(".//span[text()='(9 of 9)']")).isDisplayed() == true) {
+            ex1.setTC_ID("18");
+            ex1.setTC_Summary("Verify that Customer list  in the end page displayed when user clicking on \"End\" button of pagination function.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_064");
+        } else {
+            ex1.setTC_ID("18");
+            ex1.setTC_Summary("Verify that Customer list  in the end page displayed when user clicking on \"End\" button of pagination function.");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_064");
+        }
+
+        Result_Execls.saveResultExcel(ex1);
+
+    }
 }
 
 
