@@ -27,17 +27,9 @@ public class Testcases {
       //  dr = new ChromeDriver();
         dr = new ChromeDriver();
         dr.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Register_Action.ClickRegisterlink(dr);
         dr.get(URL);
     }
 
-    @Test
-    public void TCs1_Register()
-    {
-
-
-
-    }
     @Test
     public void TCs1_Login() throws IOException {
         user.setUsername("DiepDo101");
@@ -141,17 +133,46 @@ public class Testcases {
         Login_Action.ClickLogin(dr);
 
         if (dr.findElement(By.xpath("//p[text()='Tài khoản không tồn tại ']")).isDisplayed()) {
-            ResultExcel.SaveResultExcels("Result", "6", "Verify that 'Tài khoản không tồn tại' Error message display  in the upper right corner of the page when user enters invalid account and invalid password", "Pass");
+            ResultExcel.SaveResultExcels("Result", "7", "Verify that 'Tài khoản không tồn tại' Error message display  in the upper right corner of the page when user enters invalid account and invalid password", "Pass");
         } else {
-            ResultExcel.SaveResultExcels("Result", "6", "Verify that 'Tài khoản không tồn tại' Error message display  in the upper right corner of the page when user enters invalid account and invalid password", "Fail");
+            ResultExcel.SaveResultExcels("Result", "7", "Verify that 'Tài khoản không tồn tại' Error message display  in the upper right corner of the page when user enters invalid account and invalid password", "Fail");
         }
 
         Assert.assertEquals(true, dr.findElement(By.xpath("//p[text()='Tài khoản không tồn tại ']")).isDisplayed());
     }
-//Verify that Register page display when user clicks on "Tạo tài khoản" button
 
-//Verify that "Length is less than allowable minimum of '8'" Validation Error message display in the upper right corner of the page
-// when user register with account less than 8 characters
+    @Test
+    public void TCs8_Register() throws IOException
+    {
+        Register_Action.ClickRegisterlink(dr);
+
+        if (dr.findElement(By.xpath("//span[text()='Đăng kí tài khoản']")).isDisplayed()) {
+            ResultExcel.SaveResultExcels("Result", "8", "Verify that Register page display when user clicks on 'Tạo tài khoản' button", "Pass");
+        } else {
+            ResultExcel.SaveResultExcels("Result", "8", "Verify that Register page display when user clicks on 'Tạo tài khoản' button", "Fail");
+        }
+
+        Assert.assertEquals(true, dr.findElement(By.xpath("//span[text()='Đăng kí tài khoản']")).isDisplayed());
+
+    }
+
+    @Test
+    public void TCs9_Register() throws IOException
+    {
+        Register_Action.ClickRegisterlink(dr);
+
+
+        if (dr.findElement(By.xpath("//span[text()='Đăng kí tài khoản']")).isDisplayed()) {
+            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Length is less than allowable minimum of '8''Validation Error message display in the upper right corner of the page when user register with account less than 8 characters", "Pass");
+        } else {
+            ResultExcel.SaveResultExcels("Result", "9", "Verify that 'Length is less than allowable minimum of '8'' Validation Error message display in the upper right corner of the page when user register with account less than 8 characters", "Fail");
+        }
+
+        Assert.assertEquals(true, dr.findElement(By.xpath("//span[text()='Đăng kí tài khoản']")).isDisplayed());
+    }
+
+
+
 
 
     @AfterMethod
