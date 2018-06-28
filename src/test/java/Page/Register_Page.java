@@ -7,7 +7,7 @@ public class Register_Page {
     public static String NhaplaiMK = ".//input[@name='j_idt9:pwd2']";
     public static String Hoten = ".//input[@name='j_idt9:key']";
     public static String Sodienthoai = ".//input[@name='j_idt9:phone']";
-    public static String Ngaysinh = ".//inphut[@name='j_idt9:mask_input']";
+    public static String Ngaysinh = ".//input[@name='j_idt9:mask_input']";
     public static String GioitinhNu = ".//label[text()='Nữ']";
     public static String GioitinhNam = ".//label[text()='Nam']";
     public static String SoCMND = ".//input[@name='j_idt9:cmnd']";
