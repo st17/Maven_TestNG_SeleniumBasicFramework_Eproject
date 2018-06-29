@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class Register {
     //1. Move to Register page.
@@ -19,7 +20,7 @@ public class Register {
     //Verify that Error message" Email already exists!" displays when user enters Email has been registered.
     @Test
     public void register1() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
 
         //2. Enter Email has been registered.
@@ -57,7 +58,7 @@ public class Register {
     //Verify that message" Please enter your password" displays when user leaves Password field blank.
     @Test
     public void register2() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         register.setEmail("hongvanlkcit@gmail.com");
         //2. Leave Password field blank
@@ -93,7 +94,7 @@ public class Register {
     //Verify that User can not create account when user enter Phone are special characters or character.
     @Test
     public void register3() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         //3. Enter all field.
         register.setEmail("hongvanlkcit@gmail.com");
@@ -130,7 +131,7 @@ public class Register {
     //Verify that validation message " Register success!" displays when user register successful.
     @Test
     public void register4() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         //2. Enter all field correct.
         register.setEmail("hongvanlkcit436565243@gmail.com");
@@ -165,7 +166,7 @@ public class Register {
     // when the user enter the Confirm password should be match the Password.
     @Test
     public void register5() throws IOException{
-        System.setProperty("webdriver.chrome.driver", "D:\\Tester\\PROJECT\\SourceCode\\Maven_TestNG_CRM\\src\\test\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         register.setEmail("hongvanlkcit543@gmail.com");
         //2. Enter Password
@@ -196,6 +197,43 @@ public class Register {
                             "when the user enter the Confirm password should be match the Password.");
             ex.setTC_Result("Failed");
             ex.setTC_Note("TC_013");
+        }
+
+        Result_Execls.saveResultExcel(ex);
+    }
+    //Verify that User can not create account when user enter Email are number, special character.
+    @Test
+    public void register6() throws IOException{
+        //Random rd = new Random();
+        System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
+        Register_Object register = new Register_Object();
+        //2. Enter Email are number or special character
+        register.setEmail("43304545953@gmail.com");
+        //3. Enter all field
+        register.setPassword("abc123");
+        register.setConfirmPassword("abc123");
+        register.setName("hongvan");
+        register.setCompany("iviettech");
+        register.setPhone("0935396638");
+        dr = new ChromeDriver();
+        dr.get(siteURL);
+
+        //4. Click on Register button.
+        Register_Action.enterRegister(dr, register);
+        Register_Action.clickRegister(dr);
+
+        Excel_Object ex = new Excel_Object();
+        if (dr.findElements(By.xpath(".//p[text()='Register success!']")).size()== 1)
+        {
+            ex.setTC_ID("6");
+            ex.setTC_Summary("Verify that User can not create account when user enter Email are number, special character.");
+            ex.setTC_Result("Passed");
+            ex.setTC_Note("TC_09");
+        } else {
+            ex.setTC_ID("6");
+            ex.setTC_Summary("Verify that User can not create account when user enter Email are number, special character");
+            ex.setTC_Result("Failed");
+            ex.setTC_Note("BugID_03");
         }
 
         Result_Execls.saveResultExcel(ex);

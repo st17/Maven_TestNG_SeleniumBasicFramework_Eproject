@@ -10,9 +10,16 @@ public class EditCustomer_Action {
         dr.findElement(By.xpath(EditCustomer_Page.btn_edit)).click();
     }
     public static void enterCustomer(WebDriver dr, EditCustomer_Object ob1){
+        dr.findElement(By.xpath(EditCustomer_Page.txt_Name)).clear();
         dr.findElement(By.xpath(EditCustomer_Page.txt_Name)).sendKeys(ob1.getName());
+
+        dr.findElement(By.xpath(EditCustomer_Page.txt_Email)).clear();
         dr.findElement(By.xpath(EditCustomer_Page.txt_Email)).sendKeys(ob1.getEmail());
+
+        dr.findElement(By.xpath(EditCustomer_Page.txt_Address)).clear();
         dr.findElement(By.xpath(EditCustomer_Page.txt_Address)).sendKeys(ob1.getAddress());
+
+        dr.findElement(By.xpath(EditCustomer_Page.txt_Phone)).clear();
         dr.findElement(By.xpath(EditCustomer_Page.txt_Phone)).sendKeys(ob1.getPhone());
     }
     public static void clickSave(WebDriver dr){
