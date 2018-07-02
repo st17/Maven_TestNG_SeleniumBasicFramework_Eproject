@@ -204,11 +204,12 @@ public class Register {
     //Verify that User can not create account when user enter Email are number, special character.
     @Test
     public void register6() throws IOException{
-        //Random rd = new Random();
+        Random rd = new Random();
+        int a = rd.nextInt();
         System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         //2. Enter Email are number or special character
-        register.setEmail("43304545953@gmail.com");
+        register.setEmail("4335453"+a+"@gmail.com");
         //3. Enter all field
         register.setPassword("abc123");
         register.setConfirmPassword("abc123");
@@ -227,12 +228,12 @@ public class Register {
         {
             ex.setTC_ID("6");
             ex.setTC_Summary("Verify that User can not create account when user enter Email are number, special character.");
-            ex.setTC_Result("Passed");
+            ex.setTC_Result("Failed");
             ex.setTC_Note("TC_09");
         } else {
             ex.setTC_ID("6");
             ex.setTC_Summary("Verify that User can not create account when user enter Email are number, special character");
-            ex.setTC_Result("Failed");
+            ex.setTC_Result("Passed");
             ex.setTC_Note("BugID_03");
         }
 
