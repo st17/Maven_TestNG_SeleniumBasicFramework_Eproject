@@ -53,7 +53,7 @@ public class Result_Execls {
             sheet.autoSizeColumn(i);
         }
         // Write the output to a file
-        FileOutputStream fileOut = new FileOutputStream("E:\\Soft_Tester\\Project_CRM\\src\\test\\Data\\ResultExcel.xlsx");
+        FileOutputStream fileOut = new FileOutputStream(".\\src\\test\\Data\\ResultExcel.xlsx");
         workbook.write(fileOut);
         fileOut.close();
 
