@@ -24,4 +24,12 @@ public class Campaign_Action {
     {
         dr.findElement(By.xpath(Campaign_Page.btn_submit)).click();
     }
+    public static void searchCampaignTypeName(CampaignType ob1, WebDriver dr)
+    {
+        dr.findElement(By.xpath(Campaign_Page.txt_campaigntypename)).sendKeys(ob1.getCampaignTypeName());
+    }
+    public static void clickCancel(WebDriver dr)
+    {
+        dr.findElement(By.xpath(Campaign_Page.btn_cancel)).click();
+    }
 }
