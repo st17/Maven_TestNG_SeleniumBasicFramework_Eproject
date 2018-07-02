@@ -69,7 +69,7 @@ public class TR10_TC055 {
 
         //5. Edit information
         EditCustomer_Object ob1 = new EditCustomer_Object();
-        ob1.setName("huyen");
+        ob1.setName("huyen123");
         ob1.setEmail("huyennguyen123@gmail.com");
         ob1.setAddress("da nang");
         ob1.setPhone("0978586557");
