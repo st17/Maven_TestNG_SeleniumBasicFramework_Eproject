@@ -1,8 +1,8 @@
 package Tests;
 
-import Actions.ClickCreateCustomer_Action;
 import Actions.ClickCustomer_Action;
-import Actions.CreateCustomer1_Action;
+import Actions.ClickShowAllCustomer_Action;
+import Actions.ClickSort_Action;
 import Actions.Login_Action;
 import Commons.Result_Execls;
 import Commons.WaitforControl;
@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class TR02_TC027 {
+public class TR06_TC045 {
     String siteURL = "http://113.176.100.130:8081/CRMweb/faces/login.xhtml";
     WebDriver dr;
 
@@ -40,42 +40,31 @@ public class TR02_TC027 {
         Login_Action.clickLogin(dr);
         dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-
     }
-    //Verify that Error message " Please enter your Name" displays when user leave Name field blank.
+    //Verify that User can sort the lead follow the enter date when user clicking on Sort button
     @Test
-    public void BlankName() throws IOException{
+    public void Sort() throws IOException{
         //1. Move to Customer dropdown.
         ClickCustomer_Action.clickCustomer(dr);
+        WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
+        //2. Click on Show all customer
+        ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
+        //3. Click on Sort button.
+        ClickSort_Action.clickSort(dr);
 
-        WaitforControl.waitforControlVisible(dr, ".//a[text()='Create Customer']");
-        //2. Click on Create customer
-        ClickCreateCustomer_Action.clickCreateCustomer(dr);
-
-        //3. Leave Name field blank
-        create.setName("");
-        //4. Enter all field.
-        create.setEmail("hongvanlkcit@gmail.com");
-        create.setPhone("0935396638");
-        create.setAddress("da nang");
-
-        //5. Click on Create a customer button.
-        CreateCustomer1_Action.enterCreateACustomer(dr,create);
-        CreateCustomer1_Action.clickCreateACustomer(dr);
-
-        Excel_Object ex1 = new Excel_Object();
-        if (dr.findElement(By.xpath(".//span[text()='Please enter your name']")).isDisplayed() == true) {
-            ex1.setTC_ID("10");
-            ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
-            ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_027");
+        Excel_Object ex = new Excel_Object();
+        if (dr.findElement(By.xpath(".//a[@href='/CRMweb/faces/infoCustomer.xhtml?id=511']")).isDisplayed() == true) {
+            ex.setTC_ID("20");
+            ex.setTC_Summary("Verify that User can sort the lead follow the enter date when user clicking on Sort button");
+            ex.setTC_Result("Failed");
+            ex.setTC_Note("BugID_016");
         } else {
-            ex1.setTC_ID("10");
-            ex1.setTC_Summary("Verify that Error message \" Please enter your Name\" displays when user leave Name field blank.");
-            ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_027");
+            ex.setTC_ID("20");
+            ex.setTC_Summary("Verify that User can sort the lead follow the enter date when user clicking on Sort button");
+            ex.setTC_Result("Passed");
+            ex.setTC_Note("BugID_016");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        Result_Execls.saveResultExcel(ex);
     }
 }

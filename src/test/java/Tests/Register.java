@@ -131,10 +131,12 @@ public class Register {
     //Verify that validation message " Register success!" displays when user register successful.
     @Test
     public void register4() throws IOException {
+        Random rd = new Random();
+        int a = rd.nextInt();
         System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         //2. Enter all field correct.
-        register.setEmail("hongvanlkcit436565243@gmail.com");
+        register.setEmail("hongvanlkcit436"+a+"@gmail.com");
         register.setPassword("abc123");
         register.setConfirmPassword("abc123");
         register.setName("hongvan");
@@ -204,11 +206,12 @@ public class Register {
     //Verify that User can not create account when user enter Email are number, special character.
     @Test
     public void register6() throws IOException{
-        //Random rd = new Random();
+        Random rd = new Random();
+        int a = rd.nextInt();
         System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         //2. Enter Email are number or special character
-        register.setEmail("43304545953@gmail.com");
+        register.setEmail("4335453"+a+"@gmail.com");
         //3. Enter all field
         register.setPassword("abc123");
         register.setConfirmPassword("abc123");
@@ -223,19 +226,18 @@ public class Register {
         Register_Action.clickRegister(dr);
 
         Excel_Object ex = new Excel_Object();
-        if (dr.findElements(By.xpath(".//p[text()='Register success!']")).size()== 1)
+        if(dr.findElement(By.xpath(".//p[text()='Register success!']")).isDisplayed()==true)
         {
             ex.setTC_ID("6");
             ex.setTC_Summary("Verify that User can not create account when user enter Email are number, special character.");
-            ex.setTC_Result("Passed");
+            ex.setTC_Result("Failed");
             ex.setTC_Note("TC_09");
         } else {
             ex.setTC_ID("6");
             ex.setTC_Summary("Verify that User can not create account when user enter Email are number, special character");
-            ex.setTC_Result("Failed");
+            ex.setTC_Result("Passed");
             ex.setTC_Note("BugID_03");
         }
-
         Result_Execls.saveResultExcel(ex);
     }
 }
