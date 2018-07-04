@@ -67,4 +67,32 @@ public class TR06_TC045 {
 
         Result_Execls.saveResultExcel(ex);
     }
+    /*Select sel = new Select(dr.findElement(By.xpath("//*[@id=\"form:carTable_rppDD\"]")));
+    int val = sel.getOptions().size();
+        if (val != 20)
+    {
+        ex1.setTC_ID("84");
+        ex1.setTC_Summary("Verify that up to 20 newest opportunity display the first page when user view opportunity");
+        ex1.setTC_Result("F76");ailed");
+        ex1.setTC_Note("TC_
+    } else {
+        ex1.setTC_ID("84");
+        ex1.setTC_Summary("Verify that up to 20 newest opportunity display the first page when user view opportunity");
+        ex1.setTC_Result("Passed");
+        ex1.setTC_Note("TC_76");
+    }*/
+
+    /*String field = dr.findElement(By.xpath("//*[@id=\"j_idt108\"]/table/thead/tr")).getText();
+        if (field != "Delete")
+    {
+        ex1.setTC_ID("86");
+        ex1.setTC_Summary("Verify that \"Delete\" button displays when user views opportunity detail");
+        ex1.setTC_Result("Failed");
+        ex1.setTC_Note("TC_99");
+    } else {
+        ex1.setTC_ID("86");
+        ex1.setTC_Summary("Verify that \"Delete\" button displays when user views opportunity detail");
+        ex1.setTC_Result("Passed");
+        ex1.setTC_Note("TC_99");
+    }*/
 }

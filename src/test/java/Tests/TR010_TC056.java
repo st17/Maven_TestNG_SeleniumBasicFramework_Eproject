@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class TR08_TC48 {
+public class TR010_TC056 {
     String siteURL = "http://113.176.100.130:8081/CRMweb/faces/login.xhtml";
     WebDriver dr;
 
@@ -41,30 +41,29 @@ public class TR08_TC48 {
         dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
-    //Verify that Detail information of Lead displays when user select a Lead the system.
+    //Verify that User can delete for the lead when user clicking on Delete button.
     @Test
-    public void DetailCustomer() throws IOException{
+    public void Delete()throws IOException{
         //1. Move to Customer dropdown.
         ClickCustomer_Action.clickCustomer(dr);
         WaitforControl.waitforControlVisible(dr, ".//a[text()='Show All Customers']");
         //2. Click on Show all customer
         ClickShowAllCustomer_Action.clickShowAllCustomer(dr);
-        //3. Select a lead.
-        DetailCustomer_Action.clickACustomer(dr);
 
         Excel_Object ex1 = new Excel_Object();
-        if (dr.findElement(By.xpath(".//h5[text()='Customer Information']")).isDisplayed() == true) {
-            ex1.setTC_ID("16");
-            ex1.setTC_Summary("Verify that Detail information of Lead displays when user select a Lead the system.");
-            ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_048");
-        } else {
-            ex1.setTC_ID("16");
-            ex1.setTC_Summary("Verify that Detail information of Lead displays when user select a Lead the system.");
+        String field = dr.findElement(By.xpath("//*[@id=\"j_idt71:j_idt72_head\"]/tr")).getText();
+        if(field != "Delete"){
+            ex1.setTC_ID("22");
+            ex1.setTC_Summary("Verify that User can delete for the lead when user clicking on Delete button.");
             ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_048");
+            ex1.setTC_Note("TC_056");
+        } else {
+            ex1.setTC_ID("22");
+            ex1.setTC_Summary("Verify that User can delete for the lead when user clicking on Delete button.");
+            ex1.setTC_Result("Passed");
+            ex1.setTC_Note("TC_056");
         }
-
         Result_Execls.saveResultExcel(ex1);
+
     }
 }
