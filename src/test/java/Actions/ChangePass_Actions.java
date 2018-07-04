@@ -10,10 +10,13 @@ public class ChangePass_Actions {
         dr.findElement(By.xpath(ChangePassword_Page.txtMatkhauCu)).sendKeys(Chg.getMatKhauCu());
         dr.findElement(By.xpath(ChangePassword_Page.txtMatKhauMoi)).sendKeys(Chg.getMatKhauMoi());
         dr.findElement(By.xpath(ChangePassword_Page.txtNhapLaiMatKhauMoi)).sendKeys(Chg.getNhapLaiMatKhauMoi());
-
     }
 
-    public static void SubmitChangPass(WebDriver dr) {
+    public static void ClickDoiMatKhau(WebDriver dr) {
+        dr.findElement(By.xpath(ChangePassword_Page.DoiMatkhau)).click();
+    }
+
+    public static void SubmitChangePass(WebDriver dr) {
         dr.findElement(By.xpath(ChangePassword_Page.txtChangPass)).click();
     }
 

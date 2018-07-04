@@ -7,3 +7,4 @@ public class ChangePassword_Page {
     public static String txtNhapLaiMatKhauMoi = ".//input[@name='j_idt24:pwd2']";
     public static String txtChangPass = ".//input[@name='j_idt24:j_idt32']";
 }
+

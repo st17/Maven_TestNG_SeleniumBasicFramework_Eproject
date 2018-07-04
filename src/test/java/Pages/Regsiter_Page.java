@@ -12,6 +12,6 @@ public class Regsiter_Page {
     public static String txtGioiTinhNu = ".//label[text()='Nữ']";
     public static String txtCMND = ".//input[@name='j_idt9:cmnd']";
     public static String txtEmail = ".//input[@name='j_idt9:email']";
-    public static String txtTaoTaiKhoan = ".//span[text()='Đăng ký']";
-
+    public static String txtDangky = ".//span[text()='Đăng ký']";
+    public static String ClickTaoTaiKhoan = ".//input[@value=\"Tạo tài khoản\"]";
 }

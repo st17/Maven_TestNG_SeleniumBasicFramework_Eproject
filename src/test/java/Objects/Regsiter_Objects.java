@@ -58,7 +58,7 @@ public class Regsiter_Objects {
     }
 
     public void setCMND(String cmnd) {
-       CMND = cmnd;
+        CMND = cmnd;
     }
     public String getEmail() {
         return Email;

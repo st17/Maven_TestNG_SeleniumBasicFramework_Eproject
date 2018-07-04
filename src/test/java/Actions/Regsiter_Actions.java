@@ -22,6 +22,15 @@ public class Regsiter_Actions {
         dr.findElement(By.xpath(Regsiter_Page.txtEmail)).sendKeys(Reg.getEmail());
     }
     public static void SubmitDangki(WebDriver dr){
-        dr.findElement(By.xpath(Regsiter_Page.txtTaoTaiKhoan)).click();
+        dr.findElement(By.xpath(Regsiter_Page.txtDangky)).click();
+    }
+    public static void TaoTaiKhoan(WebDriver dr){
+        dr.findElement(By.xpath(Regsiter_Page.ClickTaoTaiKhoan)).click();
+    }
+    public static void ChonNam(WebDriver dr) {
+        dr.findElement(By.xpath(Regsiter_Page.txtGioiTinhNam)).click();
+    }
+    public static void ChonNu(WebDriver dr) {
+        dr.findElement(By.xpath(Regsiter_Page.txtGioiTinhNu)).click();
     }
 }
