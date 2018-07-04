@@ -14,6 +14,10 @@ public class Campaign_Action {
     {
         dr.findElement(By.xpath(Campaign_Page.item4_campaigns)).click();
     }
+    public static void selectItem3Campaign(WebDriver dr)
+    {
+        dr.findElement(By.xpath(Campaign_Page.item3_campaigns)).click();
+    }
     //
     public static void enterCampaignType(CampaignType ob1, WebDriver dr)
     {

@@ -64,6 +64,6 @@ public class TC_104 {
             ex1.setTC_Result("Failed");
             ex1.setTC_Note("TC_104");
         }
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
 }

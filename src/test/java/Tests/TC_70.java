@@ -1,10 +1,8 @@
 package Tests;
 
-import Actions.Campaign_Action;
 import Actions.Login_Action;
+import Actions.Opportunity_Action;
 import Commons.Result_Execls;
-import Commons.WaitforControl;
-import Objects.CampaignType;
 import Objects.CreateCustomer1_Object;
 import Objects.Excel_Object;
 import Objects.Login_Object;
@@ -17,7 +15,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class TC_105 {
+public class TC_70 {
     String siteURL = "http://113.176.100.130:8081/CRMweb/faces/login.xhtml";
     WebDriver dr;
     //Verify that Moves to Customer List page when user login successfully.
@@ -32,37 +30,26 @@ public class TC_105 {
         dr = new ChromeDriver();
         dr.manage().window().maximize();
         dr.get(siteURL);
-
         //3. Click on Login button.
         Login_Action.enterEmailAndPassword(dr, ob1);
         Login_Action.clickLogin(dr);
         dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
-    //Verify that PopUp contains content "Create success" displays when user enters all field correct
+    //Verify that Opportunities dropdown contains these data when clicking on it: Show All Opportunities
     @Test
-    public void showPopup() throws IOException
-    {
+    public void click_Opportunities() throws IOException {
         Excel_Object ex1 = new Excel_Object();
-        Campaign_Action.clickCampaign(dr);
-        WaitforControl.waitforControlVisible(dr, "//span[text()='Campaigns']");
-        Campaign_Action.selectItem4Campaign(dr);
-        CampaignType ob1 = new CampaignType();
-        ob1.setName("Marketing online");
-        Campaign_Action.enterCampaignType(ob1,dr);
-        Campaign_Action.clickSubmit(dr);
-        if(dr.findElement(By.xpath("//strong[text()='Show All Campaigns Type']")).isDisplayed() == true)
-        {
-            ex1.setTC_ID("74");
-            ex1.setTC_Summary("//Verify that PopUp contains content \"Create success\" displays when user enters all field correct");
-            ex1.setTC_Result("Failed");
-            ex1.setTC_Note("TC_105");
-        }
-        else
-        {
-            ex1.setTC_ID("74");
-            ex1.setTC_Summary("//Verify that PopUp contains content \"Create success\" displays when user enters all field correct");
+        Opportunity_Action.clickOpportunities(dr);
+        if (dr.findElement(By.xpath("//a[text()='Show All Opportunitys']")).isDisplayed() == true) {
+            ex1.setTC_ID("78");
+            ex1.setTC_Summary("Verify that Opportunities dropdown contains these data when clicking on it: Show All Opportunities");
             ex1.setTC_Result("Passed");
-            ex1.setTC_Note("TC_105");
+            ex1.setTC_Note("TC_70");
+        } else {
+            ex1.setTC_ID("78");
+            ex1.setTC_Summary("Verify that Opportunities dropdown contains these data when clicking on it: Show All Opportunities");
+            ex1.setTC_Result("Failed");
+            ex1.setTC_Note("TC_70");
         }
         //Result_Execls.saveResultExcel(ex1);
     }

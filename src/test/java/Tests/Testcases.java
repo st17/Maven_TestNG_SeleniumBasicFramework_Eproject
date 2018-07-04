@@ -53,7 +53,7 @@ public class Testcases {
             ex.setTC_Note("TC_01");
         }
 
-        Result_Execls.saveResultExcel(ex);
+        //Result_Execls.saveResultExcel(ex);
     }
 
     //Verify that Error message " The Email  or Password is incorrect !" displays when user login with incorrect Username or Password.
@@ -85,7 +85,7 @@ public class Testcases {
             ex.setTC_Note("TC_04");
         }
 
-        Result_Execls.saveResultExcel(ex);
+        //Result_Execls.saveResultExcel(ex);
     }
 
 
@@ -120,7 +120,7 @@ public class Testcases {
             ex.setTC_Note("TC_03");
         }
 
-        Result_Execls.saveResultExcel(ex);
+        //Result_Execls.saveResultExcel(ex);
 
     }
 
@@ -149,7 +149,7 @@ public class Testcases {
             ex1.setTC_Note("TC_026");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
         //Assert.assertEquals(true,dr.findElement(By.xpath("//strong[text()='Create Customer']")).isDisplayed());
 
 
@@ -189,7 +189,7 @@ public class Testcases {
                 ex1.setTC_Note("TC_027");
             }
 
-            Result_Execls.saveResultExcel(ex1);
+            //Result_Execls.saveResultExcel(ex1);
     }
     //Verify that User can not create a Customer when user enter Phone are special characters or character.
     @Test
@@ -224,7 +224,7 @@ public class Testcases {
             ex1.setTC_Note("TC_034");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
     //Verify that User can not create a Customer when user enters Email field is special characters.
     @Test
@@ -259,7 +259,7 @@ public class Testcases {
             ex1.setTC_Note("TC_030");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
 
     //Verify that "Move to Customer List page" displays when user create a Customer successful.
@@ -295,7 +295,7 @@ public class Testcases {
             ex1.setTC_Note("TC_039");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
         //Verify that the duplicate information display when user enter a lead by name at Search field.
         @Test
@@ -325,7 +325,7 @@ public class Testcases {
                 ex1.setTC_Note("TC_041");
             }
 
-            Result_Execls.saveResultExcel(ex1);
+            //Result_Execls.saveResultExcel(ex1);
     }
     //Verify that User can move to page 2 when user clicking on "Next" button of pagination function.
     @Test
@@ -351,7 +351,7 @@ public class Testcases {
             ex1.setTC_Note("TC_043");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
     //Verify that Detail information of Lead displays when user select a Lead the system.
     @Test
@@ -377,7 +377,7 @@ public class Testcases {
             ex1.setTC_Note("TC_048");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
     //Verify that User can edit for the lead when user clicking on Edit button.
     @Test
@@ -416,7 +416,7 @@ public class Testcases {
             ex1.setTC_Note("TC_055");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
     }
     //Verify that Customer list  in the end page displayed when user clicking on "End" button of pagination function.
     @Test
@@ -442,7 +442,7 @@ public class Testcases {
             ex1.setTC_Note("TC_064");
         }
 
-        Result_Execls.saveResultExcel(ex1);
+        //Result_Execls.saveResultExcel(ex1);
 
     }
 }

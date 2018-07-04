@@ -47,7 +47,7 @@ public class Login {
             ex.setTC_Note("TC_01");
         }
 
-        Result_Execls.saveResultExcel(ex);
+        //Result_Execls.saveResultExcel(ex);
     }
 
     //Verify that Error message " The Email  or Password is incorrect !" displays when user login with incorrect Username or Password.
@@ -79,7 +79,7 @@ public class Login {
             ex.setTC_Note("TC_04");
         }
 
-        Result_Execls.saveResultExcel(ex);
+        //Result_Execls.saveResultExcel(ex);
     }
     //Verify that Moves to Customer List page when user login successfully.
     CreateCustomer1_Object create = new CreateCustomer1_Object();
@@ -112,7 +112,7 @@ public class Login {
             ex.setTC_Note("TC_03");
         }
 
-        Result_Execls.saveResultExcel(ex);
+        //Result_Execls.saveResultExcel(ex);
 
     }
 }
