@@ -40,21 +40,6 @@ public class TR05_TC043 {
         Login_Action.clickLogin(dr);
         dr.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-        Excel_Object ex = new Excel_Object();
-        if (dr.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div[2]/div/div/div/div[2]")).isDisplayed() == true) {
-            ex.setTC_ID("8");
-            ex.setTC_Summary("Verify that Moves to Customer List page when user login successfully.");
-            ex.setTC_Result("Passed");
-            ex.setTC_Note("TC_03");
-        } else {
-            ex.setTC_ID("8");
-            ex.setTC_Summary("Verify that Moves to Customer List page when user login successfully.");
-            ex.setTC_Result("Failed");
-            ex.setTC_Note("TC_03");
-        }
-
-        Result_Execls.saveResultExcel(ex);
-
     }
     //Verify that User can move to page 2 when user clicking on "Next" button of pagination function.
     @Test
