@@ -36,8 +36,10 @@ public class RegsiterTC {
         Thread.sleep(1000);
     }
 
+
+    //Verify that opens register page display when users clicking "Tạo tài khoản" button
     @Test
-    public  void RegsiterTC1() throws InterruptedException, IOException {
+    public  void RegsiterTC1_TC21() throws InterruptedException, IOException {
 
 
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
@@ -56,8 +58,10 @@ public class RegsiterTC {
 
         dr.close();
     }
+
+    //Verify that validation message "Đăng kí tài khoản thành công, vui lòng vào Email để kích hoạt tài khoản." display when users clicking "Đăng kí" button
     @Test
-    public  void RegsiterTC2() throws InterruptedException, IOException {
+    public  void RegsiterTC2_TC22() throws InterruptedException, IOException {
 
 
         dr.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
@@ -66,12 +70,11 @@ public class RegsiterTC {
         dr.get(SiteURL);
         System.out.println(dr.getTitle());
 
-
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
 
         Regsiter_Objects Reg1 = new Regsiter_Objects();
 
-        Reg1.setTaiKhoan("jivou3vc34");
+        Reg1.setTaiKhoan("jirvvv3vc34");
         Reg1.setMatKhau("uhkhjuhkhj");
         Reg1.setNhapLaiMatKhau("uhkhjuhkhj");
         Reg1.setHoTen("erdftfg");
@@ -107,8 +110,10 @@ public class RegsiterTC {
         dr.close();
 
     }
+
+    //Verify that validation message "j_idt9:pwd1: Validation Error." display when users enter wrong confirm password
     @Test
-    public  void RegsiterTC3() throws InterruptedException, IOException {
+    public  void RegsiterTC3_TC23() throws InterruptedException, IOException {
 
 
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
@@ -149,8 +154,10 @@ public class RegsiterTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Mật khẩu phải lớn hơn 8 kí tự" and "Không trùng mật khẩu" display when users not enter on "Mật khẩu" and clicking "Đăng kí" button"
     @Test
-    public  void RegsiterTC4() throws InterruptedException, IOException {
+    public  void RegsiterTC4_TC24() throws InterruptedException, IOException {
 
 
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
@@ -190,8 +197,10 @@ public class RegsiterTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Tài khoản nhập sai" display when users not enter on "Tài khoản" and clicking "Đăng kí" button.
     @Test
-    public  void RegsiterTC5() throws InterruptedException, IOException {
+    public  void RegsiterTC5_TC28() throws InterruptedException, IOException {
 
 
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
@@ -232,8 +241,10 @@ public class RegsiterTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Chưa nhập CMND" display when users clicking "Đăng kí" button.
     @Test
-    public  void RegsiterTC6() throws InterruptedException, IOException {
+    public  void RegsiterTC6_TC29() throws InterruptedException, IOException {
 
 
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
@@ -273,8 +284,10 @@ public class RegsiterTC {
         dr.close();
 
     }
+
+    //Verify that validation message"size must be between 1 and 100" display when users not enter "Họ Tên" and clicking "Đăng kí" button.
     @Test
-    public  void RegsiterTC7() throws InterruptedException, IOException {
+    public  void RegsiterTC7_TC30() throws InterruptedException, IOException {
 
 
         Regsiter_Actions.ClickTaoTaiKhoan(dr);
@@ -310,8 +323,10 @@ public class RegsiterTC {
 
         dr.close();
     }
+
+    //Verify that validation message "Tài khoản đã tồn tại" display when users clicking "Đăng kí" button
     @Test
-    public  void RegsiterTC8() throws InterruptedException, IOException {
+    public  void RegsiterTC8_TC35() throws InterruptedException, IOException {
 
 
         dr.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);

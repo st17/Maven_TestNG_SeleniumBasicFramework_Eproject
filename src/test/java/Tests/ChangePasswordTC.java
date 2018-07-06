@@ -39,8 +39,10 @@ public class ChangePasswordTC {
         System.out.println(dr.getTitle());
         Thread.sleep(1000);
     }
+
+    //Verify that opens "Thay đổi mật khẩu" page displays when users change password
     @Test
-    public  void ChangePassTC1() throws InterruptedException, IOException {
+    public  void ChangePassTC1_TC10() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
@@ -64,8 +66,10 @@ public class ChangePasswordTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Đổi mật khẩu thành công" display when users Clicking "Đổi mật khẩu" button.
     @Test
-    public  void ChangePassTC2() throws InterruptedException, IOException {
+    public  void ChangePassTC2_TC12() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
@@ -97,8 +101,10 @@ public class ChangePasswordTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Mật khẩu cũ không đúng" display when users Clicking "Đổi mật khẩu" button
     @Test
-    public  void ChangePassTC3() throws InterruptedException, IOException {
+    public  void ChangePassTC3_TC13() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
@@ -130,8 +136,10 @@ public class ChangePasswordTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Mật khẩu cũ không đúng" display when users not enter on "Mật khẩu cũ" and clicking "Đổi mật khẩu" button
     @Test
-    public  void ChangePassTC4() throws InterruptedException, IOException {
+    public  void ChangePassTC4_TC14() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
@@ -163,8 +171,10 @@ public class ChangePasswordTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Mật khẩu phải lớn hơn 8 kí tự" display when users not enter on "Mật khẩu mới" and clicking "Đổi mật khẩu" button
     @Test
-    public  void ChangePassTC5() throws InterruptedException, IOException {
+    public  void ChangePassTC5_TC15() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
@@ -196,8 +206,10 @@ public class ChangePasswordTC {
         dr.close();
 
     }
+
+    //Verify that validation message "không trùng mật khẩu" display when users not enter on "Nhập lại mật khẩu mới" and clicking "Đổi mật khẩu" button
     @Test
-    public  void ChangePassTC6() throws InterruptedException, IOException {
+    public  void ChangePassTC6_TC16() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
@@ -229,8 +241,10 @@ public class ChangePasswordTC {
         dr.close();
 
     }
+
+    //Verify that validation message "j_idt24:pwd1: Validation Error." display when users enter the wrong confirm password
     @Test
-    public  void ChangePassTC7() throws InterruptedException, IOException {
+    public  void ChangePassTC7_TC18() throws InterruptedException, IOException {
 
 
         Login_Actions.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());

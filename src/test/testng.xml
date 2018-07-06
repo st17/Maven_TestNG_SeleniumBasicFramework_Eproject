@@ -14,8 +14,35 @@
 
             <class name="Tests.LoginTC" >
                 <methods>
-                    <include name="LoginTC1"/>
-                    <include name="LoginTC2"/>
+                    <include name="LoginTC1_TC01"/>
+                    <include name="LoginTC2_TC02"/>
+                    <include name="LoginTC3_TC03"/>
+                    <include name="LoginTC4_TC04"/>
+                    <include name="LoginTC5_TC05"/>
+                </methods>
+            </class>
+            <class name="Tests.ChangePasswordTC" >
+                <methods>
+                    <include name="ChangePassTC1_TC10"/>
+                    <include name="ChangePassTC2_TC12"/>
+                    <include name="ChangePassTC3_TC13"/>
+                    <include name="ChangePassTC4_TC14"/>
+                    <include name="ChangePassTC5_TC15"/>
+                    <include name="ChangePassTC6_TC16"/>
+                    <include name="ChangePassTC7_TC18"/>
+                </methods>
+            </class>
+
+            <class name="Tests.RegsiterTC" >
+                <methods>
+                    <include name="RegsiterTC1_TC21"/>
+                    <include name="RegsiterTC2_TC22"/>
+                    <include name="RegsiterTC3_TC23"/>
+                    <include name="RegsiterTC4_TC24"/>
+                    <include name="RegsiterTC5_TC28"/>
+                    <include name="RegsiterTC6_TC29"/>
+                    <include name="RegsiterTC7_TC30"/>
+                    <include name="RegsiterTC8_TC35"/>
                 </methods>
             </class>
 

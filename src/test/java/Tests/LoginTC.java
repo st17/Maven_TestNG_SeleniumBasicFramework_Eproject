@@ -38,8 +38,9 @@ public class LoginTC {
         Thread.sleep(1000);
     }
 
+    // Verify that login successfully when users clicking "Đăng nhập" button
     @Test
-    public  void LoginTC1() throws InterruptedException, IOException {
+    public  void LoginTC1_TC01() throws InterruptedException, IOException {
 
 
 
@@ -66,9 +67,9 @@ public class LoginTC {
 
     }
 
-    //Verify user cannot loggin with invalid username and password
+    //Verify that the opens "THÔNG TIN TÀI KHOẢN" page display when users login successfully system
     @Test
-    public  void LoginTC2() throws InterruptedException, IOException {
+    public  void LoginTC2_TC02() throws InterruptedException, IOException {
 
         /*BankLogin_Page.enterUsernameAndPassword(dr,user1.getUsername(),user1.getPassword());
         BankLogin_Page.clickLoginButton(dr);*/
@@ -94,8 +95,9 @@ public class LoginTC {
     }
 
 
+    //Verify that validation message "Tài khoản không tồn tại" display when users login with enter username and password
     @Test
-    public  void LoginTC3() throws InterruptedException, IOException {
+    public  void LoginTC3_TC03() throws InterruptedException, IOException {
 
         user1.setUsername("rtyfgh");
         user1.setPassword("uhkhjuhkhj");
@@ -127,8 +129,10 @@ public class LoginTC {
         dr.close();
 
     }
+
+    //Verify that validation message "Bạn chưa nhập tài khoản" display when user login with password
     @Test
-    public  void LoginTC4() throws InterruptedException, IOException {
+    public  void LoginTC4_TC04() throws InterruptedException, IOException {
 
         user1.setUsername("");
         user1.setPassword("rtyfg");
@@ -159,8 +163,10 @@ public class LoginTC {
 
         dr.close();
     }
+
+    //Verify that validation message "Bạn chưa nhập mật khẩu" display when user login with username
     @Test
-    public  void LoginTC5() throws InterruptedException, IOException {
+    public  void LoginTC5_TC05() throws InterruptedException, IOException {
 
         user1.setUsername("rtyrtfg");
         user1.setPassword("");
