@@ -47,7 +47,7 @@ public class Login {
             ex.setTC_Note("TC_01");
         }
 
-        //Result_Execls.saveResultExcel(ex);
+        Result_Execls.saveResultExcel(ex);
     }
 
     //Verify that Error message " The Email  or Password is incorrect !" displays when user login with incorrect Username or Password.
@@ -79,12 +79,12 @@ public class Login {
             ex.setTC_Note("TC_04");
         }
 
-        //Result_Execls.saveResultExcel(ex);
+        Result_Execls.saveResultExcel(ex);
     }
     //Verify that Moves to Customer List page when user login successfully.
     CreateCustomer1_Object create = new CreateCustomer1_Object();
     @Test
-    public void First () throws IOException{
+    public void dangnhap3 () throws IOException{
         System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Login_Object ob1 = new Login_Object();
         //2. Enter email and password correct
@@ -112,8 +112,9 @@ public class Login {
             ex.setTC_Note("TC_03");
         }
 
-        //Result_Execls.saveResultExcel(ex);
-
+        Result_Execls.saveResultExcel(ex);
+        dr.quit();
     }
+
 }
 

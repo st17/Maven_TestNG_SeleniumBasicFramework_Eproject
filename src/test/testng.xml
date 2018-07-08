@@ -10,11 +10,11 @@
     </listeners>
     <test name="Login Test case">
 
-        <classes>
+        <classes >
 
-            <class name="Tests.Testcases" >
+            <class name="Tests.Login" >
                 <methods>
-                    <!--<include name="BlankName"/>-->
+                    <include name="TR01_TC026"/>
                     <!--<include name="LoginTC2"/>-->
                 </methods>
             </class>

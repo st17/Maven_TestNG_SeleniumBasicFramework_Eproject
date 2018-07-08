@@ -7,6 +7,7 @@ import Objects.Register_Object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -45,11 +46,13 @@ public class Register {
             ex.setTC_Summary("Verify that Error message\" Email already exists!\" displays when user enters Email has been registered.");
             ex.setTC_Result("Passed");
             ex.setTC_Note("TC_10");
+            Assert.assertEquals(1,1);
         } else {
             ex.setTC_ID("1");
             ex.setTC_Summary("Verify that Error message\" Email already exists!\" displays when user enters Email has been registered.");
             ex.setTC_Result("Failed");
             ex.setTC_Note("TC_10");
+            Assert.assertEquals(1,0);
         }
 
         Result_Execls.saveResultExcel(ex);
@@ -93,7 +96,7 @@ public class Register {
 
     //Verify that User can not create account when user enter Phone are special characters or character.
     @Test
-    public void register3() throws IOException {
+    public  void register3() throws IOException {
         System.setProperty("webdriver.chrome.driver", ".\\src\\test\\drivers\\chromedriver.exe");
         Register_Object register = new Register_Object();
         //3. Enter all field.
@@ -126,6 +129,7 @@ public class Register {
         }
 
         Result_Execls.saveResultExcel(ex);
+        dr.quit();
     }
 
     //Verify that validation message " Register success!" displays when user register successful.

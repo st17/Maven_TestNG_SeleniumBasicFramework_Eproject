@@ -77,5 +77,6 @@ public class TR03_TC040 {
        }
 
        Result_Execls.saveResultExcel(ex1);
+       dr.quit();
    }
 }
